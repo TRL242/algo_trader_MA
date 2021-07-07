@@ -12,13 +12,19 @@ yfin.pdr_override()
 ma_1 = 30
 ma_2 = 120
 
+#Stock
+stock = ["RCL"]
+
+
+#Start and End
 start = dt.datetime.now() - dt.timedelta(days=360 * 3)
 end = dt.datetime.now()
 
 # data = web.DataReader('RCL', 'yahoo', start, end)
 # print(data)
 
-data = pdr.get_data_yahoo("RCL", start=start, end=end)
+#data pull for stock
+data = pdr.get_data_yahoo(stock, start=start, end=end)
 # print(data)
 data[f'SMA_{ma_1}'] = data['Adj Close'].rolling(window=ma_1).mean()
 data[f'SMA_{ma_2}'] = data['Adj Close'].rolling(window=ma_2).mean()
