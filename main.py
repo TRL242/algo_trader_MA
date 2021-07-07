@@ -30,3 +30,10 @@ plt.plot(data[f'SMA_{ma_1}'], label=f"SMA_{ma_1}", color="orange")
 plt.plot(data[f'SMA_{ma_2}'], label=f"SMA_{ma_2}", color="blue")
 plt.legend(loc="upper left")
 plt.show()
+
+buy_signals = []
+sell_signals = []
+trigger = 0
+
+for x in range(len(data)):
+    if data[f'SMA_{ma_1}'].iloc[x] > data[f'SMA{ma_2}'].iloc[x] and trigger != 1:
